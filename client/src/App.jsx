@@ -12,7 +12,7 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import { ToastContainer } from "react-toastify";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Navbar";
 const App = () => {
   const {authUser,isCheakingAuth} = useSelector((state => state.auth));
   const dispatch = useDispatch();
@@ -58,3 +58,4 @@ const App = () => {
 };
 
 export default App;
+
