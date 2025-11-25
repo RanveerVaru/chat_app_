@@ -90,7 +90,7 @@ export const signOut = catchAsyncError(async (req,res,next) => {
       .cookie("token", "", {
         httpOnly: true,
         maxAge: 0,
-        sameSite: "strict",
+        sameSite: "none",
         secure: process.env.NODE_ENV !== "development", 
       })
       .json({
@@ -180,4 +180,5 @@ export const updateProfile = catchAsyncError(async (req, res, next) => {
         success: true,
         user, 
     });
+
 });
