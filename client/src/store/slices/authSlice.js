@@ -32,9 +32,9 @@ export const logout = createAsyncThunk("user/sign-out",async (_,thunkAPI) =>{
 export const login = createAsyncThunk("user/sign-in",async (data,thunkAPI) =>{
     try {
          const res = await axiosInstance.post("user/sign-in",data);
-        connectSocket(res.data._id);
+        connectSocket(res.data.user._id);
         toast.success("Logged in successfully");
-        return res.data;
+        return res.data.user;
     } catch (error) {
         console.log("Error in logging out user:",error);
         return thunkAPI.rejectWithValue(error.response.data || "Error in logging out user:" );
@@ -45,9 +45,9 @@ export const login = createAsyncThunk("user/sign-in",async (data,thunkAPI) =>{
 export const register = createAsyncThunk("user/sign-up",async (data,thunkAPI) =>{
     try {
         const res = await axiosInstance.post("user/sign-up",data);
-        connectSocket(res.data._id)
+        connectSocket(res.data.user._id)
         toast.success("Registered successfully");
-        return res.data;
+        return res.data.user;
     } catch (error) {
          console.log("Error in signing user:",error);
         return thunkAPI.rejectWithValue(error.response.data || "Error in signing user:" );
@@ -148,4 +148,5 @@ export default authSlice.reducer;
 
 //async (arg, thunkAPI) => { ... } arg is replaced by _ → means “we’re not using this argument”
 //thunkAPI is an object with helpful tools eg : dispatch(signOut()) // arg = undefined, dispatch(signOut(123)) // arg = 123
+
 //thunkAPI gives you: dispatch → to dispatch other actions,getState → read current Redux state,rejectWithValue(error) → return a custom error payload+
