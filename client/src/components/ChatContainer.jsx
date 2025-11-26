@@ -74,7 +74,7 @@ const ChatContainer = () => {
                 >
                   <img
                     className="w-full h-full object-cover"
-                    src={selectedUser?.avatar?.url || "/avatar-holder.avif"}
+                    src={isSender ?  (selectedUser?.avatar?.url ||  "/avatar-holder.avif") : (authUser?.avatar?.url ||  "/avatar-holder.avif")}
                     alt="avatar"
                   />
 
@@ -129,3 +129,4 @@ const ChatContainer = () => {
 };
 
 export default ChatContainer;
+
