@@ -24,6 +24,7 @@ export const logout = createAsyncThunk("user/sign-out",async (_,thunkAPI) =>{
         disconnectSocket();
         return null;
     } catch (error) {
+        toast.error("Error in Logged Out");
         console.log("Error in logging out user:",error);
         return thunkAPI.rejectWithValue(error.response.data || "Error in logging out user:" );
     }
@@ -37,8 +38,9 @@ export const login = createAsyncThunk("user/sign-in",async (data,thunkAPI) =>{
         toast.success("Logged in successfully");
         return res.data.user;
     } catch (error) {
-        console.log("Error in logging out user:",error);
-        return thunkAPI.rejectWithValue(error.response.data || "Error in logging out user:" );
+        toast.error("Error in logging in user");
+        console.log("Error in logging in user:",error);
+        return thunkAPI.rejectWithValue(error.response.data || "Error in logging in user:" );
     }
 }
 );
@@ -50,6 +52,7 @@ export const register = createAsyncThunk("user/sign-up",async (data,thunkAPI) =>
         toast.success("Registered successfully");
         return res.data.user;
     } catch (error) {
+        toast.error("Error in sign up!!");
          console.log("Error in signing user:",error);
         return thunkAPI.rejectWithValue(error.response.data || "Error in signing user:" );
     }
@@ -151,4 +154,5 @@ export default authSlice.reducer;
 //thunkAPI is an object with helpful tools eg : dispatch(signOut()) // arg = undefined, dispatch(signOut(123)) // arg = 123
 
 //thunkAPI gives you: dispatch → to dispatch other actions,getState → read current Redux state,rejectWithValue(error) → return a custom error payload+
+
 
