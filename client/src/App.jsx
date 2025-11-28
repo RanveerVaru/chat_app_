@@ -34,13 +34,13 @@ const App = () => {
       }
     },[authUser])
 
-    // if(isCheakingAuth && !authUser){
-    //   return (
-    //     <div className="w-full h-screen flex justify-center items-center">
-    //       <Loader className="animate-spin" size={40} />
-    //     </div>
-    //   );
-    // }
+    if(isCheakingAuth && !authUser){
+      return (
+        <div className="w-full h-screen flex justify-center items-center">
+          <Loader className="animate-spin" size={40} />
+        </div>
+      );
+    }
 
 
   return <>
@@ -58,5 +58,6 @@ const App = () => {
 };
 
 export default App;
+
 
 
