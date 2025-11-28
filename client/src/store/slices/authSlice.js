@@ -33,7 +33,7 @@ export const logout = createAsyncThunk("user/sign-out",async (_,thunkAPI) =>{
 export const login = createAsyncThunk("user/sign-in",async (data,thunkAPI) =>{
     try {
          const res = await axiosInstance.post("user/sign-in",data);
-        connectSocket(res.data.user._id);
+        //connectSocket(res.data.user._id);
         //    const user = await thunkAPI.dispatch(getUser()).unwrap();
         toast.success("Logged in successfully");
         return res.data.user;
@@ -48,7 +48,7 @@ export const login = createAsyncThunk("user/sign-in",async (data,thunkAPI) =>{
 export const register = createAsyncThunk("user/sign-up",async (data,thunkAPI) =>{
     try {
         const res = await axiosInstance.post("user/sign-up",data);
-        connectSocket(res.data.user._id)
+        //connectSocket(res.data.user._id)
         toast.success("Registered successfully");
         return res.data.user;
     } catch (error) {
@@ -154,6 +154,7 @@ export default authSlice.reducer;
 //thunkAPI is an object with helpful tools eg : dispatch(signOut()) // arg = undefined, dispatch(signOut(123)) // arg = 123
 
 //thunkAPI gives you: dispatch → to dispatch other actions,getState → read current Redux state,rejectWithValue(error) → return a custom error payload+
+
 
 
 
