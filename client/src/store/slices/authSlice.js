@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 export const getUser = createAsyncThunk("user/me",async (_,thunkAPI) =>{
     try {
         const res = await axiosInstance.get("user/me");
-        // connectSocket(res.data.user_id);
+        connectSocket(res.data.user_id);
         return res.data.user;
     } catch (error) {
         console.log("Error in fetching  user:",error);
@@ -154,6 +154,7 @@ export default authSlice.reducer;
 //thunkAPI is an object with helpful tools eg : dispatch(signOut()) // arg = undefined, dispatch(signOut(123)) // arg = 123
 
 //thunkAPI gives you: dispatch → to dispatch other actions,getState → read current Redux state,rejectWithValue(error) → return a custom error payload+
+
 
 
 
