@@ -27,9 +27,10 @@ const App = () => {
           if (!socket) {
             socket = connectSocket(authUser._id);
           }
-        socket.on("getOnlineUsers",(users)=>{
-          dispatch(setOnlineUsers(users));
-        })
+         const handleOnlineUsers = (users) => {
+    dispatch(setOnlineUsers(users));
+  };
+        socket.on("getOnlineUsers",handleOnlineUsers)
 
      return () => {
           socket.off("getOnlineUsers", handleOnlineUsers);
@@ -62,6 +63,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
