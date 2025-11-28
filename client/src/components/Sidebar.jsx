@@ -10,12 +10,12 @@ const Sidebar = () => {
   const { users, selectedUser, isUsersLoading } = useSelector(
     (state) => state.chat
   );
-  const { onlineUsers } = useSelector((state) => state.auth);
+  const { onlineUsers,authUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUsers());
-  }, [dispatch]);
+  }, [dispatch,authUser]);
   // console.log("users in sidebar", users);
 
   const filteredUsers = showOnlineOnly
@@ -106,3 +106,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
