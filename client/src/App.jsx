@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Loader } from "lucide-react";
 import { useSelector,useDispatch } from "react-redux";
 import { getUser } from "./store/slices/authSlice";
-import { connectSocket } from "./lib/socket";
+import { connectSocket, getSocket } from "./lib/socket";
 import { setOnlineUsers } from "./store/slices/authSlice";
 import { BrowserRouter as Router,Routes,Route, Navigate } from "react-router-dom";
 import Login from './pages/Login';
@@ -62,6 +62,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
