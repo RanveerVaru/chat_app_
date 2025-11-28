@@ -23,16 +23,20 @@ const App = () => {
 
     useEffect(() =>{
       if(authUser){
-        const socket = connectSocket(authUser._id);
-
+         let socket = getSocket();
+          if (!socket) {
+            socket = connectSocket(authUser._id);
+          }
         socket.on("getOnlineUsers",(users)=>{
           dispatch(setOnlineUsers(users));
         })
 
-        return () => socket.disconnect();
-
+     return () => {
+          socket.off("getOnlineUsers", handleOnlineUsers);
+          // DO NOT disconnect here, let logout() handle disconnectSocket()
+      };
       }
-    },[authUser])
+    },[authUser?._id, dispatch])
 
     if(isCheakingAuth && !authUser){
       return (
@@ -58,6 +62,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
