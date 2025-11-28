@@ -19,7 +19,7 @@ const App = () => {
 
     useEffect(() =>{
       dispatch(getUser());
-    },[getUser])
+    },[])
 
     useEffect(() =>{
       if(authUser){
@@ -58,6 +58,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 
